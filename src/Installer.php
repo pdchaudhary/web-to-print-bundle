@@ -141,11 +141,11 @@ class Installer extends SettingsStoreAwareInstaller
 
     private function removePrintDocTypes(): void
     {
-        foreach(SettingsStore::getIdsByScope(self::SETTINGS_STORE_SCOPE) as $id) {
+        foreach (SettingsStore::getIdsByScope(self::SETTINGS_STORE_SCOPE) as $id) {
             $printDocTypes = SettingsStore::get($id, self::SETTINGS_STORE_SCOPE);
-            if($printDocTypes) {
+            if ($printDocTypes) {
                 $data = json_decode($printDocTypes->getData(), true);
-                if(!empty($data) && in_array($data['type'], self::DOCTYPES)) {
+                if (!empty($data) && in_array($data['type'], self::DOCTYPES)) {
                     SettingsStore::delete($id, self::SETTINGS_STORE_SCOPE);
                 }
             }
